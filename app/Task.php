@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Task extends Model
 {
@@ -25,6 +26,7 @@ class Task extends Model
 
     ];
 
+    // 状態のラベルをテキストで返す
     public function getStatusLabelAttribute() {
 
         $status = $this->attributes['status'];
@@ -37,6 +39,7 @@ class Task extends Model
 
     }
 
+    // ラベルの状態をクラスで返す
     public function getStatusClassAttribute() {
     
         $status = $this->attributes['status'];
@@ -46,6 +49,14 @@ class Task extends Model
         }
 
         return self::STATUS[$status]['class'];
-        
+
     }
+
+    // タスクの日付の表示を整形して返す
+    public function getFormattedDueDateAttribute() {
+
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['due_date'])->format('Y/m/d');
+
+    }
+
 }
