@@ -12,4 +12,17 @@ class FolderController extends Controller
         return view('folders/create');
     }
 
+    public function create(Request $request) {
+
+        $folder = new Folder();
+
+        $folder->title = $request->title;
+
+        $folder->save();
+
+        return redirect()->route('tasks.index', [
+
+            'id' => $folder->id,
+        ]);
+    }
 }
