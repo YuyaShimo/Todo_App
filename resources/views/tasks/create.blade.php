@@ -40,7 +40,7 @@
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">送信</button>
               </div>
-              </form>
+            </form>
           </div>
         </nav>
       </div>
