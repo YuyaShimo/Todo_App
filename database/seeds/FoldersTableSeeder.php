@@ -13,6 +13,8 @@ class FoldersTableSeeder extends Seeder
      */
     public function run()
     {
+        $user = DB::table('users')->first();
+        
         $titles = ['仕事', '勉強', '遊び'];
 
         foreach( $titles as $title) {
@@ -20,6 +22,7 @@ class FoldersTableSeeder extends Seeder
             DB::table('folders')->insert([
 
                 'title' => $title,
+                'user_id' => $user->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 
